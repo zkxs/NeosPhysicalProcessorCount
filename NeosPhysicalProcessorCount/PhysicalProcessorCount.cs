@@ -2,9 +2,6 @@
 using HarmonyLib;
 using NeosModLoader;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
 namespace PhysicalProcessorCount
 {
@@ -17,6 +14,7 @@ namespace PhysicalProcessorCount
 
         private static bool calculated = false;
         private static int? physicalCores = null;
+        private static bool warned = false;
 
         public override void OnEngineInit()
         {
@@ -31,6 +29,7 @@ namespace PhysicalProcessorCount
             {
                 physicalCores = QueryPhysicalCores();
                 calculated = true;
+                Msg($"Calculated that there are {physicalCores} physical cores");
             }
             return QueryPhysicalCores();
         }
@@ -44,6 +43,7 @@ namespace PhysicalProcessorCount
                 {
                     coreCount += int.Parse(item["NumberOfCores"].ToString());
                 }
+                
                 return coreCount;
             }
             catch (Exception e)
@@ -56,17 +56,22 @@ namespace PhysicalProcessorCount
         [HarmonyPatch]
         private static class HarmonyPatches
         {
-            [HarmonyPatch(typeof(StandaloneSystemInfo), nameof(StandaloneSystemInfo.PhysicalCores), MethodType.Getter)]
-            public static void PhysicalCoresPosfix(ref int? __result)
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(Engine), nameof(Engine.PhysicalProcessorCount), MethodType.Getter)]
+            public static void PhysicalCoresPostfix(ref int? __result)
             {
                 if (__result == null)
                 {
                     __result = PhysicalCores();
-                    Debug($"");
+                    Debug($"Somebody toucha my spaghet!");
                 }
                 else
                 {
-                    Warn("");
+                    if (!warned)
+                    {
+                        Warn("Neos has successfully calculated physical core count on its own! This mod may no longer be needed.");
+                        warned = true;
+                    }
                 }
             }
         }
