@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{ae020d69-a6ce-4a20-b4e4-03a80ed38830}") = "NeosPhysicalProcessorCount", "NeosPhysicalProcessorCount\NeosPhysicalProcessorCount.csproj", "{1e94202c-17df-40b2-a757-68f0ef155deb}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1e94202c-17df-40b2-a757-68f0ef155deb}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1e94202c-17df-40b2-a757-68f0ef155deb}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1e94202c-17df-40b2-a757-68f0ef155deb}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1e94202c-17df-40b2-a757-68f0ef155deb}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {023E4190-76B5-400D-80F8-4FBA92858EF7}
+	EndGlobalSection
+EndGlobal
