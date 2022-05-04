@@ -38,6 +38,7 @@ namespace PhysicalProcessorCount
         {
             try
             {
+                // from https://stackoverflow.com/questions/1542213/how-to-find-the-number-of-cpu-cores-via-net-c
                 int coreCount = 0;
                 foreach (var item in new System.Management.ManagementObjectSearcher("Select * from Win32_Processor").Get())
                 {
